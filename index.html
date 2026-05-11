@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Abdul Basit Yusif Osman — GIS Analyst & Urban Planner Portfolio">
+<title>Abdul Basit Yusif Osman | GIS Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d0d0d;
+  --ink2: #2a2a2a;
+  --ink3: #666;
+  --bg: #f7f5f0;
+  --white: #ffffff;
+  --accent: #1a4a2e;
+  --accent2: #c8893a;
+  --accent3: #2c5f8a;
+  --rule: rgba(13,13,13,0.1);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Syne', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 60px; background: rgba(247,245,240,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav-logo { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 0.08em; text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; }
+.hero-left { background: var(--accent); display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; }
+.hero-left::after { content: ''; position: absolute; bottom: 40px; left: -80px; width: 220px; height: 220px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; }
+.hero-name { font-family: var(--serif); font-size: clamp(2.6rem,4vw,3.8rem); font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 0.4rem; }
+.hero-name em { font-style: italic; color: rgba(255,255,255,0.7); }
+.hero-role { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 2rem; }
+.hero-desc { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.85; max-width: 400px; margin-bottom: 2.5rem; font-weight: 400; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.badge { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.18); border-radius: 2px; color: rgba(255,255,255,0.6); }
+
+.hero-right { background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem; }
+.hero-stats-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2rem; }
+.stat-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+.stat-row:first-of-type { border-top: 1px solid var(--rule); }
+.stat-label { font-size: 14px; color: var(--ink2); font-weight: 500; }
+.stat-value { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.stat-unit { font-family: var(--mono); font-size: 11px; color: var(--ink3); margin-left: 3px; }
+.hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.75rem 1.75rem; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+.btn-dark { background: var(--ink); color: #fff; border: 2px solid var(--ink); }
+.btn-dark:hover { background: var(--accent); border-color: var(--accent); }
+.btn-ghost { background: transparent; color: var(--ink); border: 2px solid rgba(13,13,13,0.2); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* SECTION */
+.section { padding: 6rem 0; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.75rem; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.section-tag::before { content: ''; display: block; width: 32px; height: 1px; background: currentColor; }
+.section-h { font-family: var(--serif); font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 400; line-height: 1.15; color: var(--ink); margin-bottom: 0.75rem; }
+.section-h em { font-style: italic; color: var(--accent); }
+.section-lead { font-size: 15.5px; color: var(--ink3); max-width: 620px; line-height: 1.85; margin-bottom: 3.5rem; font-weight: 400; }
+
+/* SKILLS */
+.skills-bg { background: var(--ink); }
+.skills-bg .section-tag { color: var(--accent2); }
+.skills-bg .section-h { color: #fff; }
+.skills-bg .section-h em { color: var(--accent2); }
+.skills-bg .section-lead { color: rgba(255,255,255,0.45); }
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.07); }
+.sk { background: var(--ink); padding: 1.75rem 2rem; transition: background 0.2s; }
+.sk:hover { background: #161616; }
+.sk-icon { font-family: var(--mono); font-size: 18px; color: var(--accent2); margin-bottom: 0.85rem; display: block; }
+.sk h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; margin-bottom: 0.65rem; }
+.sk ul { list-style: none; }
+.sk li { font-size: 13px; color: rgba(255,255,255,0.45); padding: 2px 0; display: flex; align-items: center; gap: 0.5rem; }
+.sk li::before { content: '→'; color: var(--accent2); font-size: 9px; flex-shrink: 0; }
+
+/* PROJECTS */
+.proj-bg { background: var(--bg); }
+.proj-wrap { display: flex; flex-direction: column; gap: 3px; }
+.proj-block { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; background: var(--white); border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.3s; }
+.proj-block:hover { box-shadow: 0 8px 48px rgba(0,0,0,0.07); }
+.proj-block.flip { direction: rtl; }
+.proj-block.flip > * { direction: ltr; }
+
+/* Map panel */
+.proj-map { position: relative; background: #e4e0d8; min-height: 500px; overflow: hidden; }
+.map-svg { width: 100%; height: 100%; display: block; }
+.map-cap { position: absolute; bottom: 14px; left: 14px; background: rgba(13,13,13,0.82); color: #fff; font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; padding: 5px 11px; border-radius: 2px; }
+.map-leg { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.95); padding: 9px 13px; border-radius: 2px; font-family: var(--mono); font-size: 9px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.leg-row { display: flex; align-items: center; gap: 6px; margin: 2.5px 0; color: #333; }
+.leg-sq { width: 9px; height: 9px; border-radius: 1px; flex-shrink: 0; }
+
+/* Content panel */
+.proj-content { padding: 3.25rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+.proj-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.4rem; }
+.proj-h { font-family: var(--serif); font-size: clamp(1.45rem,2.2vw,2rem); font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 0.4rem; }
+.proj-sub { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.2rem; }
+.proj-p { font-size: 14px; color: var(--ink2); line-height: 1.8; margin-bottom: 1.75rem; font-weight: 400; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.75rem; }
+.ptag { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.05em; padding: 3px 9px; background: var(--bg); border: 1px solid var(--rule); border-radius: 2px; color: var(--ink2); }
+
+/* Stats strip */
+.stats-strip { display: flex; border: 1px solid var(--rule); overflow: hidden; margin-bottom: 1.75rem; }
+.ss { flex: 1; padding: 0.9rem 0.75rem; text-align: center; border-right: 1px solid var(--rule); background: var(--white); }
+.ss:last-child { border-right: none; }
+.ss-n { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1; display: block; }
+.ss-l { font-family: var(--mono); font-size: 8.5px; color: var(--ink3); letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-top: 3px; }
+
+/* Case grid */
+.case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.case-cell { background: var(--white); padding: 0.9rem 1rem; }
+.case-lbl { font-family: var(--mono); font-size: 8.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+.case-cell p { font-size: 12px; color: var(--ink2); line-height: 1.55; }
+
+/* EXPERIENCE */
+.exp-bg { background: var(--white); }
+.exp-grid { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; }
+.exp-tl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; }
+.exp-list { display: flex; flex-direction: column; gap: 0; }
+.exp-card { border-left: 2px solid var(--rule); padding: 0 0 2rem 1.5rem; transition: border-color 0.2s; }
+.exp-card:hover { border-color: var(--accent); }
+.exp-card:last-child { padding-bottom: 0; }
+.exp-date { font-family: var(--mono); font-size: 10px; color: var(--ink3); margin-bottom: 0.2rem; }
+.exp-role { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 0.1rem; }
+.exp-org { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem; font-family: var(--mono); }
+.exp-card ul { padding-left: 1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.exp-card li { font-size: 13px; color: var(--ink2); }
+
+/* PUBLICATION */
+.pub-bg { background: var(--accent); }
+.pub-bg .section-tag { color: rgba(255,255,255,0.5); }
+.pub-bg .section-h { color: #fff; }
+.pub-bg .section-h em { color: var(--accent2); }
+.pub-bg .section-lead { color: rgba(255,255,255,0.45); }
+.pub-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+.pub-j { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.65rem; }
+.pub-t { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: #fff; line-height: 1.3; margin-bottom: 0.65rem; }
+.pub-authors { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
+.pub-meta { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); }
+.pub-badge { background: var(--accent2); color: #fff; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; white-space: nowrap; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-blurb { font-size: 15px; color: var(--ink2); line-height: 1.85; margin-bottom: 1.5rem; font-weight: 400; }
+.contact-note { font-family: var(--mono); font-size: 11px; color: var(--ink3); letter-spacing: 0.04em; }
+.clink { display: flex; align-items: center; gap: 1.25rem; padding: 1.15rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); transition: padding-left 0.2s; }
+.clink:first-child { border-top: 1px solid var(--rule); }
+.clink:hover { padding-left: 0.5rem; }
+.clink-icon { width: 34px; height: 34px; background: var(--accent); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; flex-shrink: 0; }
+.clink-lbl { font-family: var(--mono); font-size: 9px; color: var(--ink3); letter-spacing: 0.1em; text-transform: uppercase; }
+.clink-val { font-size: 14px; font-weight: 600; color: var(--ink); }
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: center; padding: 1.75rem 2rem; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; }
+footer span { color: var(--accent2); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 880px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left, .hero-right { padding: 3.5rem 2rem; }
+  .proj-block, .proj-block.flip { grid-template-columns: 1fr; direction: ltr; }
+  .proj-block.flip > * { direction: ltr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .exp-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .pub-card { grid-template-columns: 1fr; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .section-inner { padding: 0 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">ABYO · GIS PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-left">
+    <p class="hero-eyebrow">GIS Analyst &amp; Urban Planner · 2026</p>
+    <h1 class="hero-name">Abdul Basit<br><em>Yusif Osman</em></h1>
+    <p class="hero-role">GIS Analyst · Urban Planner · Graduate Researcher</p>
+    <p class="hero-desc">Spatial analyst applying remote sensing, proximity analysis, and demographic data integration to questions of urban growth, transit equity, and land cover change in rapidly developing metropolitan environments.</p>
+    <div class="hero-badges">
+      <span class="badge">ArcGIS Pro</span>
+      <span class="badge">Remote Sensing</span>
+      <span class="badge">Transit Equity</span>
+      <span class="badge">AICP Candidate</span>
+      <span class="badge">M.S. Geography · UNT</span>
+      <span class="badge">Denton, TX</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-stats-label">Key Project Outcomes</p>
+    <div class="stat-row"><span class="stat-label">Supervised Classification Accuracy</span><div><span class="stat-value">98.33</span><span class="stat-unit">%</span></div></div>
+    <div class="stat-row"><span class="stat-label">Urban Land Expansion (2015–2025)</span><div><span class="stat-value">+109.2</span><span class="stat-unit">%</span></div></div>
+    <div class="stat-row"><span class="stat-label">New Urbanized Area Mapped</span><div><span class="stat-value">527</span><span class="stat-unit">km²</span></div></div>
+    <div class="stat-row"><span class="stat-label">Block Groups Analyzed (DCTA)</span><div><span class="stat-value">104</span><span class="stat-unit">BGs</span></div></div>
+    <div class="stat-row"><span class="stat-label">Kappa Coefficient (Classification)</span><div><span class="stat-value">0.977</span></div></div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-dark">View Projects ↓</a>
+      <a href="mailto:abdulbasit.osman@unt.edu" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills-bg" id="skills">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Technical Expertise</p>
+      <h2 class="section-h">Tools &amp; <em>Methods</em></h2>
+      <p class="section-lead">A full-stack GIS skill set spanning spatial data acquisition, image classification, network analysis, and cartographic communication for planning and research applications.</p>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="sk"><span class="sk-icon">◈</span><h3>GIS Software</h3><ul><li>ArcGIS Pro</li><li>QGIS</li><li>ArcGIS Online</li><li>Experience Builder</li><li>Story Maps</li></ul></div>
+      <div class="sk"><span class="sk-icon">◉</span><h3>Spatial Analysis</h3><ul><li>Near Tool &amp; Proximity</li><li>Spatial Join &amp; Overlay</li><li>Network Analyst</li><li>Field Calculator (Python)</li><li>Change Detection</li></ul></div>
+      <div class="sk"><span class="sk-icon">◎</span><h3>Remote Sensing</h3><ul><li>Landsat 8 OLI</li><li>Supervised MLC Classification</li><li>Unsupervised Iso Cluster</li><li>NDVI · NDWI · NDBI</li><li>Kappa Accuracy Assessment</li></ul></div>
+      <div class="sk"><span class="sk-icon">⬡</span><h3>Data &amp; Programming</h3><ul><li>Python (ArcPy, Pandas)</li><li>SQL</li><li>ACS / Census Data</li><li>GTFS Transit Data</li><li>TIGER/Line Shapefiles</li></ul></div>
+      <div class="sk"><span class="sk-icon">◇</span><h3>Urban Planning</h3><ul><li>Transit-Oriented Development</li><li>Transit Equity Analysis</li><li>Land Use &amp; Zoning</li><li>Comprehensive Planning</li><li>AICP Candidate</li></ul></div>
+      <div class="sk"><span class="sk-icon">▣</span><h3>Research Methods</h3><ul><li>Proximity-Based Accessibility</li><li>Multi-Temporal Classification</li><li>Peer-Reviewed Publication</li><li>Critical Urban Theory</li><li>Systematic Review</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section proj-bg" id="projects">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Featured Work</p>
+      <h2 class="section-h">GIS <em>Projects</em></h2>
+      <p class="section-lead">Spatial analyses addressing urban growth, transit equity, and land cover change in rapidly developing metropolitan areas — using real data, rigorous methods, and planning-relevant findings.</p>
+    </div>
+  </div>
+
+  <div class="proj-wrap">
+
+    <!-- PROJECT 1: COLLIN COUNTY SPRAWL -->
+    <div class="proj-block reveal">
+      <div class="proj-map">
+        <svg class="map-svg" viewBox="0 0 520 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="height:100%;min-height:500px;">
+          <rect width="520" height="540" fill="#e0dcd4"/>
+          <!-- County outline -->
+          <rect x="34" y="28" width="452" height="484" rx="2" fill="#d4d0c8" stroke="#b8b4ac" stroke-width="1.5"/>
+          <!-- 2015 built-up: SW quadrant -->
+          <rect x="34" y="300" width="185" height="212" fill="#7a91b8" opacity="0.55"/>
+          <!-- NEW built-up 2025 (orange) - northern expansion -->
+          <rect x="100" y="68" width="310" height="125" fill="#c8893a" opacity="0.62"/>
+          <!-- NEW built-up - central corridor -->
+          <rect x="175" y="175" width="220" height="150" fill="#c8893a" opacity="0.58"/>
+          <!-- NEW built-up - east -->
+          <rect x="360" y="185" width="126" height="195" fill="#c8893a" opacity="0.5"/>
+          <!-- Vegetation remaining -->
+          <rect x="220" y="300" width="270" height="212" fill="#9aae88" opacity="0.42"/>
+          <!-- Lake Lavon -->
+          <ellipse cx="408" cy="418" rx="58" ry="48" fill="#5e9ab8" opacity="0.82"/>
+          <text x="408" y="421" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1a3a52" text-anchor="middle" opacity="0.9">Lake Lavon</text>
+          <!-- City dots and labels -->
+          <circle cx="95" cy="448" r="5" fill="#1a4a2e"/><text x="106" y="452" font-family="'JetBrains Mono',monospace" font-size="10" fill="#111">Plano</text>
+          <circle cx="175" cy="368" r="5" fill="#1a4a2e"/><text x="186" y="372" font-family="'JetBrains Mono',monospace" font-size="10" fill="#111">McKinney</text>
+          <circle cx="228" cy="238" r="5" fill="#1a4a2e"/><text x="239" y="242" font-family="'JetBrains Mono',monospace" font-size="10" fill="#111">Frisco</text>
+          <circle cx="154" cy="338" r="4" fill="#1a4a2e"/><text x="162" y="342" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#111">Allen</text>
+          <circle cx="262" cy="148" r="4" fill="#c8893a"/><text x="272" y="152" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#111">Celina</text>
+          <circle cx="338" cy="128" r="4" fill="#c8893a"/><text x="348" y="132" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#111">Prosper</text>
+          <circle cx="148" cy="108" r="4" fill="#c8893a"/><text x="158" y="112" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#111">Anna</text>
+          <circle cx="388" cy="268" r="4" fill="#c8893a"/><text x="398" y="272" font-family="'JetBrains Mono',monospace" font-size="9" fill="#111">Princeton</text>
+          <!-- Scale bar -->
+          <line x1="50" y1="494" x2="138" y2="494" stroke="#777" stroke-width="1.5"/>
+          <rect x="50" y="490" width="44" height="4" fill="#777" opacity="0.4"/>
+          <text x="50" y="488" font-family="'JetBrains Mono',monospace" font-size="8" fill="#666">0</text>
+          <text x="116" y="488" font-family="'JetBrains Mono',monospace" font-size="8" fill="#666">15 km</text>
+          <!-- North arrow -->
+          <polygon points="482,52 478,66 482,62 486,66" fill="#444"/>
+          <text x="482" y="76" font-family="'JetBrains Mono',monospace" font-size="9" fill="#444" text-anchor="middle">N</text>
+          <!-- Data source note -->
+          <text x="34" y="516" font-family="'JetBrains Mono',monospace" font-size="8" fill="#888">Data: Landsat 8 OLI · USGS GloVis · ArcGIS Pro</text>
+        </svg>
+        <div class="map-cap">Change Detection Map · Collin County, TX · 2015–2025</div>
+        <div class="map-leg">
+          <div class="leg-row"><div class="leg-sq" style="background:#c8893a;opacity:0.85"></div>New Built-up (2015–25)</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#7a91b8;opacity:0.8"></div>Built-up 2015</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#9aae88;opacity:0.8"></div>Vegetation / Open</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#5e9ab8"></div>Water</div>
+        </div>
+      </div>
+      <div class="proj-content">
+        <p class="proj-num">Project 01 · GEOG 5530 Remote Sensing &amp; Image Analysis</p>
+        <h2 class="proj-h">Identifying Urban Sprawl in Collin County, Texas (2015–2025)</h2>
+        <p class="proj-sub">Landsat 8 OLI · Supervised Classification · Change Detection · ArcGIS Pro</p>
+        <p class="proj-p">Collin County ranked <strong>2nd in the U.S.</strong> for single-year numeric population gain in 2024–2025, growing from 144,000 (1990) to an estimated 1.3 million today. This study applies supervised maximum likelihood classification to Landsat 8 imagery across two time points to map where, how fast, and in what spatial pattern built-up land is replacing agricultural and natural cover across the county's full 2,296 km² extent.</p>
+        <div class="stats-strip">
+          <div class="ss"><span class="ss-n">+109.2%</span><span class="ss-l">Built-up Increase</span></div>
+          <div class="ss"><span class="ss-n">527 km²</span><span class="ss-l">New Urban Area</span></div>
+          <div class="ss"><span class="ss-n">98.33%</span><span class="ss-l">Accuracy (MLC)</span></div>
+          <div class="ss"><span class="ss-n">0.977</span><span class="ss-l">Kappa Coeff.</span></div>
+        </div>
+        <div class="proj-tags">
+          <span class="ptag">Landsat 8 OLI</span><span class="ptag">Max Likelihood Classification</span><span class="ptag">Iso Cluster Unsupervised</span><span class="ptag">NDVI · NDWI · NDBI</span><span class="ptag">Reclassify + Combine</span><span class="ptag">Accuracy Assessment</span><span class="ptag">ArcGIS Pro</span>
+        </div>
+        <div class="case-grid">
+          <div class="case-cell"><p class="case-lbl">Research Question</p><p>Where and at what rate is agricultural and natural land converting to urban impervious surface across one of America's fastest-growing counties?</p></div>
+          <div class="case-cell"><p class="case-lbl">Methods</p><p>Supervised MLC and unsupervised Iso Cluster classification on summer-season Landsat 8 composites; stratified random accuracy assessment (60 pts); binary change detection via Reclassify + Combine.</p></div>
+          <div class="case-cell"><p class="case-lbl">Key Finding</p><p>Built-up land expanded from 472 km² (20.6%) to 988 km² (43.0%) — a net gain of 516 km² in one decade. Sprawl is multi-nodal and most intense around Celina, Prosper, Anna, and Frisco along major highway corridors.</p></div>
+          <div class="case-cell"><p class="case-lbl">Planning Relevance</p><p>Provides a reproducible remote sensing framework for stormwater, urban heat, and infrastructure planning as the county moves toward a projected 2.2M residents by 2050.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: DCTA TRANSIT ACCESSIBILITY -->
+    <div class="proj-block flip reveal">
+      <div class="proj-map">
+        <svg class="map-svg" viewBox="0 0 520 540" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="height:100%;min-height:500px;">
+          <rect width="520" height="540" fill="#e0dcd4"/>
+          <!-- City boundary -->
+          <path d="M40,50 L480,50 L480,500 L40,500 Z" fill="#d4d0c8" stroke="#b8b4ac" stroke-width="1.5"/>
+          <!-- Transit Desert (outer) warm tan -->
+          <rect x="40" y="50" width="440" height="450" fill="#e8c090" opacity="0.45"/>
+          <!-- Low Access ring -->
+          <rect x="100" y="110" width="320" height="330" fill="#c87840" opacity="0.38"/>
+          <!-- Moderate Access -->
+          <rect x="160" y="175" width="200" height="200" fill="#944820" opacity="0.38"/>
+          <!-- High Access core -->
+          <ellipse cx="258" cy="262" rx="80" ry="65" fill="#1a4a2e" opacity="0.78"/>
+          <!-- Campus boxes -->
+          <rect x="218" y="232" width="38" height="28" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1" rx="1"/>
+          <text x="237" y="249" font-family="'JetBrains Mono',monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">UNT</text>
+          <rect x="264" y="240" width="34" height="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.35)" stroke-width="1" rx="1"/>
+          <text x="281" y="255" font-family="'JetBrains Mono',monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">TWU</text>
+          <!-- Bus stops in core -->
+          <circle cx="238" cy="272" r="3.5" fill="#fff" opacity="0.9"/>
+          <circle cx="254" cy="263" r="3.5" fill="#fff" opacity="0.9"/>
+          <circle cx="270" cy="272" r="3.5" fill="#fff" opacity="0.9"/>
+          <circle cx="246" cy="283" r="3.5" fill="#fff" opacity="0.9"/>
+          <circle cx="272" cy="255" r="3.5" fill="#fff" opacity="0.9"/>
+          <circle cx="232" cy="255" r="3" fill="#fff" opacity="0.7"/>
+          <!-- Sparse stops outer -->
+          <circle cx="178" cy="195" r="2.5" fill="#888" opacity="0.65"/>
+          <circle cx="318" cy="188" r="2.5" fill="#888" opacity="0.65"/>
+          <circle cx="158" cy="295" r="2.5" fill="#888" opacity="0.65"/>
+          <circle cx="342" cy="318" r="2.5" fill="#888" opacity="0.65"/>
+          <circle cx="218" cy="358" r="2.5" fill="#888" opacity="0.65"/>
+          <circle cx="298" cy="158" r="2.5" fill="#888" opacity="0.65"/>
+          <!-- A-Train stations -->
+          <rect x="232" y="302" width="52" height="17" rx="2" fill="#2c5f8a"/>
+          <text x="258" y="314" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700">DOWNTOWN STN</text>
+          <rect x="232" y="322" width="52" height="17" rx="2" fill="#2c5f8a" opacity="0.8"/>
+          <text x="258" y="334" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700">MEDPARK STN</text>
+          <!-- Downtown label -->
+          <text x="258" y="210" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(255,255,255,0.9)" text-anchor="middle" font-weight="700">Downtown Denton</text>
+          <!-- Equity gap callouts -->
+          <circle cx="100" cy="108" r="18" fill="none" stroke="#c8893a" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <text x="100" y="106" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#a06820" text-anchor="middle">Equity</text>
+          <text x="100" y="117" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#a06820" text-anchor="middle">Gap</text>
+          <circle cx="430" cy="420" r="18" fill="none" stroke="#c8893a" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <text x="430" y="418" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#a06820" text-anchor="middle">Equity</text>
+          <text x="430" y="429" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#a06820" text-anchor="middle">Gap</text>
+          <circle cx="430" cy="108" r="18" fill="none" stroke="#c8893a" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <text x="430" y="106" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#a06820" text-anchor="middle">Equity</text>
+          <text x="430" y="117" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#a06820" text-anchor="middle">Gap</text>
+          <!-- Scale -->
+          <line x1="55" y1="485" x2="138" y2="485" stroke="#777" stroke-width="1.5"/>
+          <text x="55" y="480" font-family="'JetBrains Mono',monospace" font-size="8" fill="#666">0</text>
+          <text x="115" y="480" font-family="'JetBrains Mono',monospace" font-size="8" fill="#666">5 mi</text>
+          <text x="40" y="516" font-family="'JetBrains Mono',monospace" font-size="8" fill="#888">Data: DCTA GTFS · Census TIGER/Line · ACS 5-Yr Estimates</text>
+        </svg>
+        <div class="map-cap">Transit Accessibility Tiers · City of Denton, TX · 2026</div>
+        <div class="map-leg">
+          <div class="leg-row"><div class="leg-sq" style="background:#1a4a2e"></div>High Access (&lt; ¼ mi)</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#944820;opacity:0.75"></div>Moderate (¼–½ mi)</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#c87840;opacity:0.7"></div>Low Access (½–1 mi)</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#e8c090;opacity:0.9"></div>Transit Desert (&gt;1 mi)</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#2c5f8a"></div>A-Train Station</div>
+          <div class="leg-row"><div class="leg-sq" style="background:#888"></div>DCTA Bus Stop</div>
+        </div>
+      </div>
+      <div class="proj-content">
+        <p class="proj-num">Project 02 · GEOG 5550 Advanced GIS</p>
+        <h2 class="proj-h">Assessing Transit Accessibility in the City of Denton, Texas</h2>
+        <p class="proj-sub">ArcGIS Pro · Near Tool · DCTA GTFS · ACS Demographics · Equity Analysis</p>
+        <p class="proj-p">With Denton's population surging past 139,000 — driven by UNT and TWU enrollment and DFW suburbanization — the DCTA network serves a dense urban core but leaves much of the city's outer residential areas effectively unserved. This study classifies all 104 Census block groups into four accessibility tiers and cross-references findings with ACS zero-vehicle household and poverty data to reveal where transit need and supply diverge most sharply.</p>
+        <div class="stats-strip">
+          <div class="ss"><span class="ss-n">104</span><span class="ss-l">Block Groups</span></div>
+          <div class="ss"><span class="ss-n">159</span><span class="ss-l">DCTA Stops</span></div>
+          <div class="ss"><span class="ss-n">0</span><span class="ss-l">Median Stops/BG</span></div>
+          <div class="ss"><span class="ss-n">2.89</span><span class="ss-l">Skewness</span></div>
+        </div>
+        <div class="proj-tags">
+          <span class="ptag">Near Tool</span><span class="ptag">Feature to Point</span><span class="ptag">Spatial Join</span><span class="ptag">Field Calculator Python</span><span class="ptag">GTFS stops.txt</span><span class="ptag">ACS Table B08201</span><span class="ptag">Transit Equity</span>
+        </div>
+        <div class="case-grid">
+          <div class="case-cell"><p class="case-lbl">Research Question</p><p>Are DCTA's bus stops equitably distributed across Denton's 104 Census block groups, particularly for low-income and zero-vehicle households?</p></div>
+          <div class="case-cell"><p class="case-lbl">Methods</p><p>Near Tool (Euclidean distance from block group centroid to nearest DCTA stop); Spatial Join for stop counts; four-tier classification via Python in Field Calculator; ACS demographic overlay.</p></div>
+          <div class="case-cell"><p class="case-lbl">Key Finding</p><p>Transit supply is heavily concentrated in a small urban core (median = 0 stops/BG, skewness = 2.89). Several outer residential block groups with elevated zero-vehicle rates fall in the Transit Desert tier — transit-dependent but transit-poor.</p></div>
+          <div class="case-cell"><p class="case-lbl">Policy Relevance</p><p>Directly critiques DCTA's 2024 GoZone restructuring, which removed on-demand microtransit from Denton — precisely the service model suited to serve outer Transit Desert block groups this analysis identifies.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section exp-bg" id="experience">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Professional Background</p>
+      <h2 class="section-h">Experience &amp; <em>Education</em></h2>
+      <p class="section-lead">A career bridging GIS analysis, graduate research, and municipal planning practice across the United States and Ghana.</p>
+    </div>
+    <div class="exp-grid reveal">
+      <div>
+        <p class="exp-tl">Professional Timeline</p>
+        <div style="background:var(--bg);border:1px solid var(--rule);padding:1.5rem;">
+          <p style="font-family:var(--mono);font-size:10px;color:var(--ink3);line-height:2;">
+            2026 → M.S. Defense<br>
+            2025 → Journal of Urbanism<br>
+            2025 → AAG Conference<br>
+            2023 → UNT Teaching Asst<br>
+            2021 → La Nkwantanang<br>
+            2019 → Accra Metro Assembly<br>
+            2019 → B.A. Geography, UG
+          </p>
+        </div>
+      </div>
+      <div class="exp-list">
+        <div class="exp-card">
+          <p class="exp-date">2023 – 2026 (Expected) · Denton, TX</p>
+          <p class="exp-role">Graduate Researcher &amp; Teaching Assistant</p>
+          <p class="exp-org">University of North Texas · Department of Geography &amp; the Environment</p>
+          <ul>
+            <li>Instructed undergraduate GIS lab sections covering ArcGIS Pro, spatial analysis, and cartographic design</li>
+            <li>Conducted thesis research on neoliberal urbanism, displacement, and land dispossession in Accra, Ghana</li>
+            <li>Presented at the American Association of Geographers (AAG) annual conference</li>
+            <li>Co-authored peer-reviewed study on TOD effectiveness — <em>Journal of Urbanism</em>, Jan. 2026</li>
+          </ul>
+        </div>
+        <div class="exp-card">
+          <p class="exp-date">2021 – 2023 · Accra, Ghana</p>
+          <p class="exp-role">Urban Planner / GIS Analyst</p>
+          <p class="exp-org">La Nkwantanang Madina Municipal Assembly</p>
+          <ul>
+            <li>Conducted GIS-based spatial analysis to support land use planning and infrastructure decision-making</li>
+            <li>Prepared technical maps and reports for municipal development planning processes</li>
+            <li>Facilitated community stakeholder engagement in participatory planning exercises</li>
+          </ul>
+        </div>
+        <div class="exp-card">
+          <p class="exp-date">2019 – 2021 · Accra, Ghana</p>
+          <p class="exp-role">Planning Officer</p>
+          <p class="exp-org">Accra Metropolitan Assembly</p>
+          <ul>
+            <li>Supported comprehensive planning and development permit review processes</li>
+            <li>Contributed to urban growth documentation and spatial data management</li>
+          </ul>
+        </div>
+        <div class="exp-card">
+          <p class="exp-date">Expected 2026 · Denton, TX</p>
+          <p class="exp-role">M.S. Geography + GIS Certificate</p>
+          <p class="exp-org">University of North Texas</p>
+          <ul>
+            <li>Thesis: <em>Urban Entrepreneurialism, Displacement, and the Neoliberal City: The Politics of Space in Accra</em></li>
+            <li>Advisor: Dr. Waquar Ahmed &nbsp;·&nbsp; Committee: Dr. Ipsita Chatterjee, Dr. Jihoon Jung</li>
+          </ul>
+        </div>
+        <div class="exp-card">
+          <p class="exp-date">2015 – 2019 · Legon, Accra</p>
+          <p class="exp-role">B.A. Geography</p>
+          <p class="exp-org">University of Ghana</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATION -->
+<section class="section pub-bg" id="publications">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Research Output</p>
+      <h2 class="section-h">Peer-Reviewed <em>Publication</em></h2>
+      <p class="section-lead" style="color:rgba(255,255,255,0.45);">Original empirical contribution to the transit-oriented development and urban planning literature.</p>
+    </div>
+    <div class="pub-card reveal">
+      <div>
+        <p class="pub-j">Journal of Urbanism · January 2026 · Peer-Reviewed</p>
+        <p class="pub-t">Transit-Oriented Development Effectiveness: Evidence from Fireclay Village, Salt Lake City</p>
+        <p class="pub-authors">Abdul Basit Yusif Osman et al.</p>
+        <p class="pub-meta">Co-authored · Update with DOI and journal link when available</p>
+      </div>
+      <span class="pub-badge">Published 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Get in Touch</p>
+      <h2 class="section-h">Let's <em>Connect</em></h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <p class="contact-blurb">I'm actively seeking GIS analyst and urban planning roles across the U.S. If you're looking for a spatial analyst with hands-on experience in transit equity, remote sensing, and planning research — with real peer-reviewed output and municipal planning experience — I'd love to talk.</p>
+        <p class="contact-note">Open to relocation &nbsp;·&nbsp; AICP Candidate &nbsp;·&nbsp; Available Summer 2026</p>
+      </div>
+      <div>
+        <a href="mailto:abdulbasit.osman@unt.edu" class="clink">
+          <div class="clink-icon">✉</div>
+          <div><p class="clink-lbl">Email</p><p class="clink-val">abdulbasit.osman@unt.edu</p></div>
+        </a>
+        <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener" class="clink">
+          <div class="clink-icon" style="background:var(--accent3);">in</div>
+          <div><p class="clink-lbl">LinkedIn</p><p class="clink-val">Update with your URL</p></div>
+        </a>
+        <a href="https://github.com/abyosman" target="_blank" rel="noopener" class="clink">
+          <div class="clink-icon" style="background:#24292e;">⌥</div>
+          <div><p class="clink-lbl">GitHub</p><p class="clink-val">github.com/abyosman</p></div>
+        </a>
+        <div class="clink" style="cursor:default;">
+          <div class="clink-icon" style="background:var(--accent2);">⊕</div>
+          <div><p class="clink-lbl">Location</p><p class="clink-val">Denton, TX · Open to Relocation</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Abdul Basit Yusif Osman &nbsp;·&nbsp; GIS Portfolio &nbsp;·&nbsp; <span>abyosman.github.io</span> &nbsp;·&nbsp; 2026</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
